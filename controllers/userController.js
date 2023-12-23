@@ -50,8 +50,8 @@ module.exports = {
             if(user) {
                 if(bcrypt.compareSync(password, user.password)) {
                     console.log(rememberMe);
-                    if(rememberMe) res.cookie("token", user.token, { maxAge: 86400000, httpOnly: true });
-                    else res.cookie("token", user.token, { maxAge: 3600000, httpOnly: true });
+                    if(rememberMe) res.cookie("token", user.token, { maxAge: 86400000, httpOnly: true, secure: true });
+                    else res.cookie("token", user.token, { maxAge: 3600000, httpOnly: true, secure: true });
                     return res.status(200).send({ message: "Login success", token: user.token });
                 }
                 return res.status(200).send({ message: "The password is incorrect" });
