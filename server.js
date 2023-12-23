@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const routes = require('./routes/routes');
@@ -18,6 +19,7 @@ app.use(cors({
     ],
     credentials: true
 }));
+app.use(cookieParser());
 
 
 const password = process.env.MONGODB_PASSWORD;

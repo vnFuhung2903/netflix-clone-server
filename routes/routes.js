@@ -7,13 +7,15 @@ const routes = (app) => {
 
     app.post("/login", userController.login);
 
-    app.get("/list/:token", userController.getList);
+    app.get("/logout", userController.logout)
+
+    app.get("/list", userController.getList);
 
     app.post("/list", userController.updateList);
 
-    app.get("/list/:token/:type/:id", userController.check);
+    app.get("/list/:type/:id", userController.check);
 
-    app.get("/recently/:token", userController.getRecently);
+    app.get("/recently", userController.getRecently);
 
     app.post("/recently", userController.updateRecently);
 }
