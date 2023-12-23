@@ -35,7 +35,7 @@ module.exports = {
             user.token = token;
             user.save();
             console.log(res.json(user));
-            res.cookie("token", token, { maxAge: 3600000, httpOnly: true, secure: true });
+            res.cookie("token", token, { maxAge: 3600000, httpOnly: true, secure: true, sameSite: "none" });
             return res.status(200).send({ token: token });
         }
         catch(err) {
@@ -51,8 +51,8 @@ module.exports = {
                 if(bcrypt.compareSync(password, user.password)) {
                     console.log(rememberMe);
                     if(rememberMe) res.cookie("token", user.token, { maxAge: 86400000, httpOnly: true, secure: true });
-                    else res.cookie("token", user.token, { maxAge: 3600000, httpOnly: true, secure: true });
-                    return res.status(200).send({ message: "Login success", token: user.token });
+                    else res.cookie("token", user.token, { maxAge: 3600000, httpOnly: true, secure: true, sameSite: "none" });
+                    return res.status(200).send({ message: "Login success", token: user.token, sameSite: "none" });
                 }
                 return res.status(200).send({ message: "The password is incorrect" });
             }
