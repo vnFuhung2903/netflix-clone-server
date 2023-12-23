@@ -9,7 +9,13 @@ const routes = require('./routes/routes');
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: ["http://localhost:3000"],
+    origin: [
+        "http://localhost:3000", 
+        "https://netflixbyvnfuhung2903.vercel.app", 
+        "https://netflixbyvnfuhung2903-vnfuhung2903s-projects.vercel.app", 
+        "https://netflixbyvnfuhung2903-git-main-vnfuhung2903s-projects.vercel.app",
+        "https://vercel.com/vnfuhung2903s-projects/netflixbyvnfuhung2903/GNP7wXttF1q2A67xs3KFWxDJV2Vc"
+    ],
     credentials: true
 }));
 

@@ -73,7 +73,7 @@ module.exports = {
             if(user) {
                 const movieFound = user.list.find(movie => movie.type === type && movie.feature.id === feature.id);
                 if(movieFound) {
-                    user.list.pop(movieFound);
+                    user.list = user.list.filter(movie => movie.type !== type || movie.feature.id !== feature.id);
                     res.status(200).send({ in_list: false });
                     console.log("Removed");
                 }
