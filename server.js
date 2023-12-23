@@ -20,6 +20,7 @@ const uri = `mongodb+srv://${mongodbname}:${password}@vnfuhung2903.45t0xd8.mongo
 
 
 app.listen(process.env.PORT, () => {
+    console.log(process.env.PORT);
     mongoose.connect(uri)
     .then(() => console.log("Connected"))
 });

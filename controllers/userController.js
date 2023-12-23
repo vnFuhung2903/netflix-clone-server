@@ -124,12 +124,9 @@ module.exports = {
             const { token, type, feature } = req.body;
             const user = await userModel.findOne({ token });
             if(user) {
-                const movieFound = user.recently.find(movie => movie.type === type && movie.feature.id === feature.id);
-                if(movieFound) {
-                    user.recently.pop(movieFound);
-                }
+                user.recently = user.recently.filter(movie => movie.type !== type || movie.feature.id !== feature.id);
                 user.recently.unshift({ type: type, feature: feature });
-                if(user.recently.length > 20) user.recently.shift();
+                if(user.recently.length > 20) user.recently.pop();
                 user.save();
             }
         }
